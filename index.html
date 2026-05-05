@@ -2,31 +2,35 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contagem Regressiva - Casamento</title>
+
   <style>
     body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
 
-  background: 
-    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-    url('images/foto.jpg') no-repeat center center;
+      background: 
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url('images/foto.jpg') no-repeat center 30%;
 
-  background-size: cover;
+      background-size: cover;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: white;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+    }
 
     .container {
       text-align: center;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.92);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      color: #5a3e36;
+      max-width: 90%;
     }
 
     h1 {
@@ -43,6 +47,7 @@
       display: flex;
       gap: 20px;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     .time-box {
@@ -56,19 +61,37 @@
     .number {
       font-size: 2rem;
       font-weight: bold;
+      color: #5a3e36;
     }
 
     .label {
       font-size: 0.9rem;
       opacity: 0.7;
+      color: #5a3e36;
     }
 
     .footer {
       margin-top: 20px;
       font-style: italic;
     }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .container {
+        padding: 25px;
+      }
+
+      .time-box {
+        min-width: 60px;
+        padding: 15px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>💍 Nosso Casamento</h1>
@@ -79,14 +102,17 @@
         <div id="days" class="number">0</div>
         <div class="label">Dias</div>
       </div>
+
       <div class="time-box">
         <div id="hours" class="number">0</div>
         <div class="label">Horas</div>
       </div>
+
       <div class="time-box">
         <div id="minutes" class="number">0</div>
         <div class="label">Minutos</div>
       </div>
+
       <div class="time-box">
         <div id="seconds" class="number">0</div>
         <div class="label">Segundos</div>
