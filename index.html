@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contagem Regressiva - Casamento</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+
+  background: 
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url('images/foto.jpg') no-repeat center center;
+
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
+
+    .container {
+      text-align: center;
+      background: rgba(255,255,255,0.85);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .time-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      min-width: 80px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .number {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💍 Nosso Casamento</h1>
+    <p>Estamos contando os dias para esse momento especial</p>
+
+    <div class="countdown">
+      <div class="time-box">
+        <div id="days" class="number">0</div>
+        <div class="label">Dias</div>
+      </div>
+      <div class="time-box">
+        <div id="hours" class="number">0</div>
+        <div class="label">Horas</div>
+      </div>
+      <div class="time-box">
+        <div id="minutes" class="number">0</div>
+        <div class="label">Minutos</div>
+      </div>
+      <div class="time-box">
+        <div id="seconds" class="number">0</div>
+        <div class="label">Segundos</div>
+      </div>
+    </div>
+
+    <div class="footer">23/05 às 19:30 (BRT)</div>
+  </div>
+
+  <script>
+    const targetDate = new Date("2026-05-23T19:30:00-03:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.querySelector('.container').innerHTML = "<h1>💖 Chegou o grande dia!</h1>";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
