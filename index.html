@@ -8,40 +8,67 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-
-      background: 
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-        url('images/foto2.jpg') no-repeat center 30%;
-
-      background-size: cover;
-
-      display: flex;
-      align-items: flex-start;
-      padding-top: 60px; 
-      justify-content: center;
-      height: 100vh;
-      color: white;
+      font-family: 'Georgia', serif;
     }
 
+    /* layout principal */
+    .page {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* lado esquerdo (imagem) */
+    .left {
+      flex: 1;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .left img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* lado direito (cores do convite) */
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: linear-gradient(
+        135deg,
+        #f5efe6 0%,
+        #efe4d2 50%,
+        #e4d2b3 100%
+      );
+    }
+
+    /* container */
     .container {
       text-align: center;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.85);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      color: #5a3e36;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      color: #6b4f3b;
       max-width: 90%;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #8b6a4e;
     }
 
-    p {
-      font-size: 1.2rem;
+    .message {
+      font-size: 1.1rem;
+      line-height: 1.6;
       margin-bottom: 30px;
+      color: #6b4f3b;
     }
 
     .countdown {
@@ -57,32 +84,47 @@
       border-radius: 15px;
       min-width: 80px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border: 1px solid #e0d2bd;
     }
 
     .number {
       font-size: 2rem;
       font-weight: bold;
-      color: #5a3e36;
+      color: #8b6a4e;
     }
 
     .label {
       font-size: 0.9rem;
-      opacity: 0.7;
-      color: #5a3e36;
+      opacity: 0.8;
+      color: #6b4f3b;
     }
 
     .footer {
       margin-top: 20px;
       font-style: italic;
+      color: #8b6a4e;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
+    /* responsivo */
+    @media (max-width: 768px) {
+      .page {
+        flex-direction: column;
+      }
+
+      .left, .right {
+        height: 50vh;
       }
 
       .container {
         padding: 25px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .message {
+        font-size: 1rem;
       }
 
       .time-box {
@@ -94,33 +136,49 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1>💍 Nosso Casamento</h1>
-    <p>Estamos contando os dias para esse momento especial</p>
+  <div class="page">
 
-    <div class="countdown">
-      <div class="time-box">
-        <div id="days" class="number">0</div>
-        <div class="label">Dias</div>
-      </div>
+    <div class="left">
+      <img src="images/foto.jpg" alt="Foto do casal">
+    </div>
 
-      <div class="time-box">
-        <div id="hours" class="number">0</div>
-        <div class="label">Horas</div>
-      </div>
+    <div class="right">
+      <div class="container">
+        <h1>💍 Nosso Casamento</h1>
 
-      <div class="time-box">
-        <div id="minutes" class="number">0</div>
-        <div class="label">Minutos</div>
-      </div>
+        <div class="message">
+          Nossa história começou há 10 anos e hoje, damos um passo de fé:<br>
+          celebrar o sacramento do Matrimônio.
+          <br>
+          <br>Estamos contando os dias para esse momento especial!
+        </div>
 
-      <div class="time-box">
-        <div id="seconds" class="number">0</div>
-        <div class="label">Segundos</div>
+        <div class="countdown">
+          <div class="time-box">
+            <div id="days" class="number">0</div>
+            <div class="label">Dias</div>
+          </div>
+
+          <div class="time-box">
+            <div id="hours" class="number">0</div>
+            <div class="label">Horas</div>
+          </div>
+
+          <div class="time-box">
+            <div id="minutes" class="number">0</div>
+            <div class="label">Minutos</div>
+          </div>
+
+          <div class="time-box">
+            <div id="seconds" class="number">0</div>
+            <div class="label">Segundos</div>
+          </div>
+        </div>
+
+        <div class="footer">23 de maio de 2026 às 19:30</div>
       </div>
     </div>
 
-    <div class="footer">23/05 às 19:30 (BRT)</div>
   </div>
 
   <script>
@@ -131,7 +189,8 @@
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        document.querySelector('.container').innerHTML = "<h1>💖 Chegou o grande dia!</h1>";
+        document.querySelector('.container').innerHTML =
+          "<h1>💖 Chegou o grande dia!</h1>";
         return;
       }
 
