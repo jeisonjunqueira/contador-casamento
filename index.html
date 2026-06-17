@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contagem Regressiva - Casamento</title>
+  <title>Tempo de Matrimônio</title>
 
   <style>
     body {
@@ -11,13 +11,11 @@
       font-family: 'Georgia', serif;
     }
 
-    /* layout principal */
     .page {
       display: flex;
       height: 100vh;
     }
 
-    /* lado esquerdo (imagem) */
     .left {
       flex: 1;
       background: #ffffff;
@@ -32,13 +30,11 @@
       object-fit: contain;
     }
 
-    /* lado direito (cores do convite) */
     .right {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-
       background: linear-gradient(
         135deg,
         #f5efe6 0%,
@@ -47,7 +43,6 @@
       );
     }
 
-    /* container */
     .container {
       text-align: center;
       background: rgba(255,255,255,0.85);
@@ -105,13 +100,13 @@
       color: #8b6a4e;
     }
 
-    /* responsivo */
     @media (max-width: 768px) {
       .page {
         flex-direction: column;
       }
 
-      .left, .right {
+      .left,
+      .right {
         height: 50vh;
       }
 
@@ -144,13 +139,11 @@
 
     <div class="right">
       <div class="container">
-        <h1>💍 Nosso Casamento</h1>
+        <h1>💍 Nosso Matrimônio</h1>
 
         <div class="message">
-          Nossa história começou há 10 anos e hoje, damos um passo de fé:<br>
-          celebrar o sacramento do Matrimônio.
-          <br>
-          <br>Estamos contando os dias para esse momento especial!
+          Nossa história começou há 10 anos e hoje celebramos a graça do
+          sacramento do Matrimônio.
         </div>
 
         <div class="countdown">
@@ -175,23 +168,25 @@
           </div>
         </div>
 
-        <div class="footer">23 de maio de 2026 às 19:30</div>
+        <div class="footer">
+          Casados desde 23 de maio de 2026 às 19:30
+        </div>
       </div>
     </div>
 
   </div>
 
   <script>
-    const targetDate = new Date("2026-05-23T19:30:00-03:00");
+    const weddingDate = new Date("2026-05-23T19:30:00-03:00");
 
-    function updateCountdown() {
+    function updateCounter() {
       const now = new Date();
-      const diff = targetDate - now;
 
-      if (diff <= 0) {
-        document.querySelector('.container').innerHTML =
-          "<h1>💖 Chegou o grande dia!</h1>";
-        return;
+      let diff = now - weddingDate;
+
+      // Antes do casamento continua mostrando quanto falta
+      if (diff < 0) {
+        diff = Math.abs(diff);
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -199,14 +194,15 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      document.getElementById('days').textContent = days;
-      document.getElementById('hours').textContent = hours;
-      document.getElementById('minutes').textContent = minutes;
-      document.getElementById('seconds').textContent = seconds;
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    updateCounter();
+    setInterval(updateCounter, 1000);
   </script>
+
 </body>
 </html>
