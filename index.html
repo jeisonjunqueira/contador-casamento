@@ -1,208 +1,397 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tempo de Matrimônio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-    }
+<title>Jeison & Micheline</title>
 
-    .page {
-      display: flex;
-      height: 100vh;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    .left {
-      flex: 1;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-    .left img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+<style>
 
-    .right {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fff;
+    overflow-x:hidden;
+}
+
+/* Layout */
+
+.page{
+    display:flex;
+    min-height:100vh;
+}
+
+/* FOTO */
+
+.left{
+    flex:6;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.left img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* CONTEÚDO */
+
+.right{
+    flex:4;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+
+    background:
+    linear-gradient(
         135deg,
-        #f5efe6 0%,
-        #efe4d2 50%,
-        #e4d2b3 100%
-      );
+        #F7F2EA 0%,
+        #EFE3D0 50%,
+        #E3D1B3 100%
+    );
+}
+
+.container{
+    width:100%;
+    max-width:550px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.75);
+
+    backdrop-filter:blur(8px);
+
+    padding:50px 35px;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.08);
+}
+
+/* NOMES */
+
+.names{
+    font-family:'Cormorant Garamond', serif;
+    font-size:4rem;
+    font-weight:600;
+    color:#7A5B43;
+
+    line-height:1;
+}
+
+.and{
+    font-size:2rem;
+    margin:8px 0;
+}
+
+/* FRASE */
+
+.message{
+    margin-top:30px;
+
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.45rem;
+
+    line-height:1.6;
+
+    color:#6D5644;
+}
+
+/* TÍTULO DO CONTADOR */
+
+.counter-title{
+    margin-top:40px;
+    margin-bottom:25px;
+
+    font-family:'Montserrat', sans-serif;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    color:#A18061;
+
+    font-size:.9rem;
+}
+
+/* CONTADOR */
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.time-box{
+
+    min-width:95px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    border:1px solid #E8D9C7;
+
+    transition:.3s;
+}
+
+.time-box:hover{
+    transform:translateY(-2px);
+}
+
+.number{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:2.5rem;
+
+    font-weight:600;
+
+    color:#8B6A4E;
+}
+
+.label{
+
+    margin-top:5px;
+
+    font-family:'Montserrat', sans-serif;
+
+    font-size:.75rem;
+
+    letter-spacing:1px;
+
+    color:#7A5B43;
+}
+
+/* DATA */
+
+.footer{
+
+    margin-top:35px;
+
+    font-family:'Montserrat', sans-serif;
+
+    font-size:.85rem;
+
+    color:#8B6A4E;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .page{
+        flex-direction:column;
     }
 
-    .container {
-      text-align: center;
-      background: rgba(255,255,255,0.85);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      color: #6b4f3b;
-      max-width: 90%;
+    .left{
+        min-height:45vh;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 15px;
-      color: #8b6a4e;
+    .right{
+        min-height:55vh;
+        padding:20px;
     }
 
-    .message {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      color: #6b4f3b;
+    .names{
+        font-size:3rem;
     }
 
-    .countdown {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .message{
+        font-size:1.2rem;
     }
 
-    .time-box {
-      background: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      min-width: 80px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      border: 1px solid #e0d2bd;
+    .time-box{
+        min-width:80px;
     }
 
-    .number {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #8b6a4e;
+    .number{
+        font-size:2rem;
     }
+}
 
-    .label {
-      font-size: 0.9rem;
-      opacity: 0.8;
-      color: #6b4f3b;
-    }
-
-    .footer {
-      margin-top: 20px;
-      font-style: italic;
-      color: #8b6a4e;
-    }
-
-    @media (max-width: 768px) {
-      .page {
-        flex-direction: column;
-      }
-
-      .left,
-      .right {
-        height: 50vh;
-      }
-
-      .container {
-        padding: 25px;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      .message {
-        font-size: 1rem;
-      }
-
-      .time-box {
-        min-width: 60px;
-        padding: 15px;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
-  <div class="page">
+
+<div class="page">
 
     <div class="left">
-      <img src="images/foto.jpg" alt="Foto do casal">
+        <img src="images/foto.jpg" alt="Jeison e Micheline">
     </div>
 
     <div class="right">
-      <div class="container">
-        <h1>💍 Nosso Matrimônio</h1>
 
-        <div class="message">
-          Nossa história começou há 10 anos e hoje celebramos a graça do
-          sacramento do Matrimônio.
+        <div class="container">
+
+            <div class="names">
+                Jeison
+                <div class="and">&</div>
+                Micheline
+            </div>
+
+            <div class="message">
+                Nossa história começou há 10 anos e hoje,
+                damos um passo de fé:
+                celebrar o sacramento do Matrimônio.
+            </div>
+
+            <div id="counterTitle" class="counter-title">
+                FALTAM
+            </div>
+
+            <div class="countdown">
+
+                <div class="time-box">
+                    <div id="c1" class="number">0</div>
+                    <div id="l1" class="label">Dias</div>
+                </div>
+
+                <div class="time-box">
+                    <div id="c2" class="number">0</div>
+                    <div id="l2" class="label">Horas</div>
+                </div>
+
+                <div class="time-box">
+                    <div id="c3" class="number">0</div>
+                    <div id="l3" class="label">Minutos</div>
+                </div>
+
+                <div class="time-box">
+                    <div id="c4" class="number">0</div>
+                    <div id="l4" class="label">Segundos</div>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                23 de maio de 2026 às 19h30
+            </div>
+
         </div>
 
-        <div class="countdown">
-          <div class="time-box">
-            <div id="days" class="number">0</div>
-            <div class="label">Dias</div>
-          </div>
-
-          <div class="time-box">
-            <div id="hours" class="number">0</div>
-            <div class="label">Horas</div>
-          </div>
-
-          <div class="time-box">
-            <div id="minutes" class="number">0</div>
-            <div class="label">Minutos</div>
-          </div>
-
-          <div class="time-box">
-            <div id="seconds" class="number">0</div>
-            <div class="label">Segundos</div>
-          </div>
-        </div>
-
-        <div class="footer">
-          Casados desde 23 de maio de 2026 às 19:30
-        </div>
-      </div>
     </div>
 
-  </div>
+</div>
 
-  <script>
-    const weddingDate = new Date("2026-05-23T19:30:00-03:00");
+<script>
 
-    function updateCounter() {
-      const now = new Date();
+const weddingDate =
+new Date("2026-05-23T19:30:00-03:00");
 
-      let diff = now - weddingDate;
+function calculateMarriageTime(start,end){
 
-      // Antes do casamento continua mostrando quanto falta
-      if (diff < 0) {
-        diff = Math.abs(diff);
-      }
+    let years=end.getFullYear()-start.getFullYear();
+    let months=end.getMonth()-start.getMonth();
+    let days=end.getDate()-start.getDate();
+    let hours=end.getHours()-start.getHours();
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      document.getElementById("days").textContent = days;
-      document.getElementById("hours").textContent = hours;
-      document.getElementById("minutes").textContent = minutes;
-      document.getElementById("seconds").textContent = seconds;
+    if(hours<0){
+        hours+=24;
+        days--;
     }
 
-    updateCounter();
-    setInterval(updateCounter, 1000);
-  </script>
+    if(days<0){
+        const prevMonth=
+        new Date(end.getFullYear(),end.getMonth(),0);
+
+        days+=prevMonth.getDate();
+        months--;
+    }
+
+    if(months<0){
+        months+=12;
+        years--;
+    }
+
+    return{
+        years,
+        months,
+        days,
+        hours
+    };
+}
+
+function updateCounter(){
+
+    const now=new Date();
+
+    if(now < weddingDate){
+
+        const diff=
+        weddingDate-now;
+
+        const days=
+        Math.floor(diff/(1000*60*60*24));
+
+        const hours=
+        Math.floor((diff/(1000*60*60))%24);
+
+        const minutes=
+        Math.floor((diff/(1000*60))%60);
+
+        const seconds=
+        Math.floor((diff/1000)%60);
+
+        document.getElementById("counterTitle")
+            .innerText="FALTAM";
+
+        document.getElementById("c1").innerText=days;
+        document.getElementById("c2").innerText=hours;
+        document.getElementById("c3").innerText=minutes;
+        document.getElementById("c4").innerText=seconds;
+
+        document.getElementById("l1").innerText="Dias";
+        document.getElementById("l2").innerText="Horas";
+        document.getElementById("l3").innerText="Minutos";
+        document.getElementById("l4").innerText="Segundos";
+
+    } else {
+
+        const result=
+        calculateMarriageTime(weddingDate,now);
+
+        document.getElementById("counterTitle")
+            .innerText="CASADOS HÁ";
+
+        document.getElementById("c1").innerText=result.years;
+        document.getElementById("c2").innerText=result.months;
+        document.getElementById("c3").innerText=result.days;
+        document.getElementById("c4").innerText=result.hours;
+
+        document.getElementById("l1").innerText="Anos";
+        document.getElementById("l2").innerText="Meses";
+        document.getElementById("l3").innerText="Dias";
+        document.getElementById("l4").innerText="Horas";
+    }
+}
+
+updateCounter();
+
+setInterval(updateCounter,1000);
+
+</script>
 
 </body>
 </html>
